@@ -1,0 +1,5 @@
+espruino_*_esp32.tgz
+espruino_*_esp32/
+*.done
+main-new.js
+main-new-2.js
