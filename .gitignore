@@ -1,3 +1,4 @@
+.vscode/
 espruino_*_esp32.tgz
 espruino_*_esp32/
 *.done
