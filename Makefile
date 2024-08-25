@@ -6,15 +6,15 @@ upload_speed := 921600
 doit: upload
 
 upload:
-	@sed s/SSID_HERE/$(ssid)/ main.js > main-new.js
-	@sed s/PSWD_HERE/$(password)/ main-new.js > main-new-2.js
+	@sed "s/SSID_HERE/$(ssid)/" main.js > main-new.js
+	@sed "s/PSWD_HERE/$(password)/" main-new.js > main-new-2.js
 	-@mv main-new-2.js main-new.js
-	-espruino -m -p $(port) -b ${baud_rate} -e 'save();' main-new.js
+	-npx espruino -m -p $(port) -b ${baud_rate} -e 'save();' main-new.js
 	-@rm main-new.js
 
 burn: deps
-	esptool --port $(port) erase_flash
-	esptool															\
+	python -m esptool --port $(port) erase_flash
+	python -m esptool															\
 		--chip esp32												\
 		--port $(port)												\
 		--baud ${upload_speed}										\
@@ -28,7 +28,7 @@ burn: deps
 		0x10000 ./espruino_2v14_esp32/espruino_esp32.bin
 
 update: deps
-	esptool															\
+	python -m esptool															\
 		--chip esp32												\
 		--port $(port)												\
 		--baud ${upload_speed}										\
@@ -51,7 +51,7 @@ pip-deps.done:
 npm-deps: npm-deps.done
 
 npm-deps.done:
-	npm install -g espruino
+	npm install espruino
 	touch npm-deps.done
 
 espruino_2v14_esp32.tgz:
