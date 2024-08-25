@@ -4,3 +4,5 @@ espruino_*_esp32/
 *.done
 main-new.js
 main-new-2.js
+*env/
+node_modules/
