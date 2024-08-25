@@ -1,5 +1,5 @@
-const ssid     = 'SSID_HERE';
-const password = 'PSWD_HERE';
+const ssid     = "SSID_HERE";
+const password = "PSWD_HERE";
 const port     = 80;
 
 const led = 2; // Or D2 or new Pin(2) or Pin(2)
